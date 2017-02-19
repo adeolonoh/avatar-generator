@@ -47,6 +47,30 @@ class Avatar(object):
         image.save(stream, format=filetype, optimize=True)
         return stream.getvalue()
 
+    @classmethod
+    def generate_fixed(cls, image_size, font_size, text,
+            filetype="JPEG", txtcolor=(255, 255, 255), bgcolor=(0, 0, 0)):
+        """
+            Generates a squared avatar with fixed colors.
+
+            :param image_size: size of the avatar, in pixels
+            :param font_size: size of the text font, in points
+            :param text: string to be used to print text and seed the random
+            :param filetype: the file format of the image (i.e. JPEG, PNG)
+            :param txtcolor: RGB color for text
+            :param bgcolor: RBG color for background
+        """
+        image = Image.new('RGB', (image_size, image_size), bgcolor)
+        draw = ImageDraw.Draw(image)
+        font = cls._font(font_size)
+        draw.text(cls._text_position(image_size, text, font),
+            text,
+            fill=txtcolor,
+            font=font)
+        stream = BytesIO()
+        image.save(stream, format=filetype, optimize=True)
+        return stream.getvalue()
+
     @staticmethod
     def _background_color(s):
         """

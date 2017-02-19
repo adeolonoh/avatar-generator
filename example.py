@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 @app.route('/<text>.png')
 def example(text):
-    text = string[0:2].upper()
-    avatar = Avatar.generate(500, 255, text, 'PNG')
+    #avatar = Avatar.generate(500, 255, text, 'PNG')
+    avatar = Avatar.generate_fixed(500, 255, text, 'PNG', (255, 0, 0), (0, 0, 255))
     headers = { 'Content-Type': 'image/png' }
     return make_response(avatar, 200, headers)
 
