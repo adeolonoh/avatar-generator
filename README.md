@@ -23,6 +23,11 @@ This is largely inspired by [Richard O'Dwyer's randomavatar](https://github.com/
         headers = { 'Content-Type': 'image/png' }
         return make_response(avatar, 200, headers)
 
+## Generating static images
+
+    python generate.py
+    aws s3 cp . s3://<bucketname>/avatar/default/ --recursive --acl=public-read --cache-control='max-age=31536000, public'
+
 ## Licence
 
 This code is under [WTFPL](https://en.wikipedia.org/wiki/WTFPL). Just do what the fuck you want with it.
