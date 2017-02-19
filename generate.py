@@ -14,7 +14,7 @@ def create(text, name=None):
 
     print file_og
 
-    avatar = Avatar.generate_fixed(500, 255, text, 'PNG',
+    avatar = Avatar.generate(500, 255, text, 'PNG',
         (170, 181, 194), (236, 238, 241))
     with open(file_og, 'wb') as f:
         f.write(avatar)
