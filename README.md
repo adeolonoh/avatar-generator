@@ -26,6 +26,7 @@ This is largely inspired by [Richard O'Dwyer's randomavatar](https://github.com/
 ## Generating static images
 
     python generate.py
+    cd out
     aws s3 cp . s3://<bucketname>/avatar/default/ --recursive --acl=public-read --cache-control='max-age=31536000, public'
 
 ## Licence
